@@ -1,0 +1,30 @@
+"dev" aur "server" dono ek hi kaam karte hain — naam bas tumhari choice hai.
+"start" automatically production me use hota hai.ko automatically run karta hai.
+"start" Ye usually production mode (ya simple run mode) ke liye hota hai.
+"start" Isme nodemon nahi hota, matlab agar code change kare to restart manually karna padta hai.
+
+Login / Signup ke liye — Token
+
+Jab user signup ya login karta hai, tab hum JWT token generate karte hain.
+
+Ye token proof hota hai ke user authenticated hai.
+
+Token browser mai store hota hai (usually cookie ya localStorage).
+
+Jab bhi user next time koi request bhejta hai (like update profile), wo token send karta hai.
+
+🔹 2️⃣ Profile update ke liye — Middleware
+
+Middleware (like protectRoute) check karega ke token valid hai ya nahi.
+
+Agar token valid hai → user authenticated → next() chalega → controller execute hoga (profile update).
+
+Agar token invalid / missing hai → middleware request block karega (“Unauthorized”).
+
+Agar jis bande ko message bheja hai wo online hai →
+👉 Message turant (real-time) uske screen par show hoga.
+
+Agar wo banda offline hai →
+👉 Message database me save ho jayega
+👉 Lekin real-time popup nahi milega
+👉 Wo jab app open karega / online hoga, tab tum fetch karke message show karoge.
