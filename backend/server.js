@@ -82,9 +82,13 @@ app.use('/api/chat', chatRouter)
 //connect to mongodb
 await connectDB()
 
-//Agar dono side true hain, left-side (first one) run hoti hai.OR operator pehla true milte hi ruk jaata hai ✅
-const PORT = process.env.PORT || 5000
-server.listen(PORT, () => console.log('Server is running on PORT:' + PORT))
+if (process.env.NODE_ENV !== "production") {
+    //Agar dono side true hain, left-side (first one) run hoti hai.OR operator pehla true milte hi ruk jaata hai ✅
+    const PORT = process.env.PORT || 5000
+    server.listen(PORT, () => console.log('Server is running on PORT:' + PORT))
+}
+//Export server for vercel
+export default server;
 
 
 
